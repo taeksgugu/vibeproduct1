@@ -39,3 +39,43 @@ generateBtn.addEventListener('click', () => {
         lottoNumbersDiv.appendChild(numberDiv);
     });
 });
+
+// Formspree Contact Form Logic
+const contactForm = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
+
+if (contactForm) {
+    contactForm.addEventListener('submit', async (event) => {
+        event.preventDefault(); // Prevent default form submission
+
+        const formData = new FormData(contactForm);
+        try {
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                formStatus.textContent = '문의가 성공적으로 접수되었습니다!';
+                formStatus.style.color = 'green';
+                contactForm.reset(); // Clear the form
+            } else {
+                const data = await response.json();
+                if (data.errors) {
+                    formStatus.textContent = data.errors.map(error => error.message).join(', ');
+                } else {
+                    formStatus.textContent = '문의 접수 중 오류가 발생했습니다.';
+                }
+                formStatus.style.color = 'red';
+            }
+        } catch (error) {
+            formStatus.textContent = '네트워크 오류가 발생했습니다.';
+            formStatus.style.color = 'red';
+            console.error('Form submission error:', error);
+        }
+    });
+}
+
