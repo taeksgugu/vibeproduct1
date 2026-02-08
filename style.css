@@ -25,12 +25,24 @@ body.dark-mode {
 body {
     font-family: sans-serif;
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* Changed to column to stack header and main */
+    justify-content: flex-start; /* Align content to the top */
     align-items: center;
     min-height: 100vh;
     background-color: var(--background-color);
     color: var(--text-color);
     transition: background-color 0.3s, color 0.3s;
+    margin: 0; /* Remove default body margin */
+}
+
+main {
+    flex-grow: 1; /* Allow main to take up available space */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align container to top within main */
+    width: 100%;
+    padding-top: 20px; /* Space from header */
+    box-sizing: border-box; /* Include padding in width */
 }
 
 .container {
@@ -40,6 +52,70 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 15px var(--shadow-color);
     position: relative; /* For positioning the toggle button */
+    width: 90%; /* Make container more responsive */
+    max-width: 800px; /* Limit max width */
+    margin-bottom: 20px; /* Space below container */
+}
+
+.intro-text {
+    margin-bottom: 20px;
+    line-height: 1.6;
+    color: var(--text-color);
+}
+
+/* Navigation Bar Styles */
+.main-nav {
+    width: 100%;
+    background-color: var(--container-bg-color); /* Use container bg for nav */
+    color: var(--text-color);
+    padding: 15px 20px;
+    box-shadow: 0 2px 8px var(--shadow-color);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap; /* Allow wrapping on small screens */
+    box-sizing: border-box;
+    position: sticky; /* Make nav sticky */
+    top: 0;
+    z-index: 1000; /* Ensure nav is on top */
+}
+
+.nav-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--text-color);
+    text-decoration: none;
+    margin-right: 20px;
+}
+
+.main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.main-nav ul li a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.main-nav ul li a:hover {
+    color: var(--button-bg-color);
+}
+
+@media (max-width: 600px) {
+    .main-nav {
+        flex-direction: column;
+    }
+    .main-nav ul {
+        margin-top: 10px;
+    }
 }
 
 .theme-toggle {

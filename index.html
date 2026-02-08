@@ -9,30 +9,48 @@
      crossorigin="anonymous"></script>
 </head>
 <body>
-    <div class="container">
-        <button id="theme-toggle" class="theme-toggle">🌙</button>
-        <h1>로또 번호 생성기</h1>
-        <button id="generate-btn">번호 생성</button>
-        <div id="lotto-numbers" class="lotto-numbers"></div>
+    <header>
+        <nav class="main-nav">
+            <a href="/" class="nav-brand">로또 번호 생성기</a>
+            <ul>
+                <li><a href="/">홈</a></li>
+                <li><a href="/about.html">소개</a></li>
+                <li><a href="/privacy.html">개인정보처리방침</a></li>
+                <li><a href="#contact-form-section">문의</a></li>
+            </ul>
+        </nav>
+    </header>
 
-        <h2 style="margin-top: 40px;">제휴 문의</h2>
-        <form id="contact-form" action="https://formspree.io/f/xdalobrq" method="POST">
-            <div class="form-group">
-                <label for="name">이름:</label>
-                <input type="text" id="name" name="name" required>
-            </div>
-            <div class="form-group">
-                <label for="email">이메일:</label>
-                <input type="email" id="email" name="email" required>
-            </div>
-            <div class="form-group">
-                <label for="message">문의 내용:</label>
-                <textarea id="message" name="message" rows="5" required></textarea>
-            </div>
-            <button type="submit">보내기</button>
-            <p id="form-status" style="margin-top: 10px;"></p>
-        </form>
-    </div>
+    <main>
+        <div class="container">
+            <button id="theme-toggle" class="theme-toggle">🌙</button>
+            <h1>로또 번호 생성기</h1>
+            <p class="intro-text">
+                이 페이지는 여러분의 행운을 위한 로또 번호를 자동으로 생성해 드립니다. 1부터 45까지의 숫자 중 겹치지 않는 6개의 숫자를 무작위로 뽑아드립니다.
+                매주 행운의 숫자를 확인하고, 즐거운 상상을 해보세요!
+            </p>
+            <button id="generate-btn">번호 생성</button>
+            <div id="lotto-numbers" class="lotto-numbers"></div>
+
+            <h2 id="contact-form-section" style="margin-top: 40px;">제휴 문의</h2>
+            <form id="contact-form" action="https://formspree.io/f/xdalobrq" method="POST">
+                <div class="form-group">
+                    <label for="name">이름:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">이메일:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">문의 내용:</label>
+                    <textarea id="message" name="message" rows="5" required></textarea>
+                </div>
+                <button type="submit">보내기</button>
+                <p id="form-status" style="margin-top: 10px;"></p>
+            </form>
+        </div>
+    </main>
     <script src="/main.js"></script>
 </body>
 </html>
