@@ -1,14 +1,72 @@
+:root {
+    --background-color: #f0f0f0;
+    --text-color: #333;
+    --container-bg-color: #ffffff;
+    --button-bg-color: #4CAF50;
+    --button-text-color: white;
+    --button-hover-bg-color: #45a049;
+    --lotto-number-bg-color: #fff;
+    --lotto-number-text-color: #333;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+}
+
+body.dark-mode {
+    --background-color: #222;
+    --text-color: #eee;
+    --container-bg-color: #333;
+    --button-bg-color: #6a0dad; /* Darker purple for dark mode button */
+    --button-text-color: white;
+    --button-hover-bg-color: #5a099a;
+    --lotto-number-bg-color: #555;
+    --lotto-number-text-color: #eee;
+    --shadow-color: rgba(0, 0, 0, 0.5);
+}
+
 body {
     font-family: sans-serif;
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #f0f0f0;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
     text-align: center;
+    background-color: var(--container-bg-color);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px var(--shadow-color);
+    position: relative; /* For positioning the toggle button */
+}
+
+.theme-toggle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background-color: var(--lotto-number-bg-color);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 2px 5px var(--shadow-color);
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.theme-toggle:hover {
+    opacity: 0.8;
+}
+
+h1 {
+    color: var(--text-color);
 }
 
 #generate-btn {
@@ -17,15 +75,15 @@ body {
     cursor: pointer;
     border: none;
     border-radius: 5px;
-    background-color: #4CAF50;
-    color: white;
+    background-color: var(--button-bg-color);
+    color: var(--button-text-color);
     margin-bottom: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: background-color 0.3s, transform 0.2s;
+    box-shadow: 0 4px 8px var(--shadow-color);
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
 }
 
 #generate-btn:hover {
-    background-color: #45a049;
+    background-color: var(--button-hover-bg-color);
     transform: translateY(-2px);
 }
 
@@ -39,12 +97,14 @@ body {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #fff;
+    background-color: var(--lotto-number-bg-color);
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.5rem;
     font-weight: bold;
-    color: #333;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    color: var(--lotto-number-text-color);
+    box-shadow: 0 2px 4px var(--shadow-color);
+    transition: background-color 0.3s, color 0.3s, box-shadow 0.3s;
 }
+
